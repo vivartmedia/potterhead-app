@@ -29,12 +29,12 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="p-8 flex flex-col items-center">
       <h1 className="text-2xl font-bold mb-4">Harry Potter Characters</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-8">
+      <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-8">
         {characters.map((character) => (
-          <div key={character.id} className="flex justify-center items-center flex-col w-48" onClick={() => openModal(character)}>
-            <img src={character.image} alt={character.name} className=" w-48 h-56 overflow-hidden rounded-lg" />
+          <div key={character.id} className="cursor-pointer flex justify-center items-center flex-col w-48" onClick={() => openModal(character)}>
+            <img src={character.image} alt={character.name} className="shadow-lg w-48 h-56 overflow-hidden rounded-lg transition-transform duration-200 ease-in-out transform hover:scale-110 hover:shadow-xl" />
             <p className="text-center mt-2">{character.name}</p>
           </div>
         ))}
@@ -44,10 +44,15 @@ const Home: React.FC = () => {
         <Modal show={modalIsOpen} onClose={closeModal}>
           <Modal.Header>{selectedCharacter.name}</Modal.Header>
           <Modal.Body>
-            <div className="flex flex-col items-center">
+            
+            <div className="flex gap-8 items-center">
+             
+              <div>
               {selectedCharacter.image && (
-                <img src={selectedCharacter.image} alt={selectedCharacter.name} className="w-32 h-32 mb-4 rounded-lg" />
+                <img src={selectedCharacter.image} alt={selectedCharacter.name} className="w-64 mb-4 rounded-lg" />
               )}
+              </div>
+              <div>
               <p><strong>House:</strong> {selectedCharacter.house}</p>
               <p><strong>Species:</strong> {selectedCharacter.species}</p>
               <p><strong>Gender:</strong> {selectedCharacter.gender}</p>
@@ -65,6 +70,8 @@ const Home: React.FC = () => {
                   <p><strong>Length:</strong> {selectedCharacter.wand.length}</p>
                 </>
               )}
+              </div>
+              
             </div>
           </Modal.Body>
           <Modal.Footer>
