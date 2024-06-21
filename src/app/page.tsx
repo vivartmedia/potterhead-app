@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { Modal } from 'flowbite-react';
-import { getCharacters, Character } from '../services/potterheadService';
-import styles from '../styles/Home.module.css';
+import { getCharacters } from '../services/potterheadService';
+import { Character } from '../../Interfaces/Interfaces';
 
 const Home: React.FC = () => {
   const [characters, setCharacters] = useState<Character[]>([]);

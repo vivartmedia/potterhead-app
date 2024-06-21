@@ -13,4 +13,3 @@ export const getCharacters = async (): Promise<Character[]> => {
     return [];
   }
 };
-
