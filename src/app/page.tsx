@@ -34,18 +34,21 @@ const Home: React.FC = () => {
       <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-8">
         {characters.map((character) => (
           <div key={character.id} className="cursor-pointer flex justify-center items-center flex-col w-48" onClick={() => openModal(character)}>
-            <img src={character.image} alt={character.name} className="shadow-lg w-48 h-56 overflow-hidden rounded-lg transition-transform duration-200 ease-in-out transform hover:scale-110 hover:shadow-xl" />
+                        <div className="w-48 h-72  overflow-hidden rounded-lg shadow-lg transition-transform duration-200 ease-in-out transform hover:scale-110 hover:shadow-xl">
+            <img src={character.image} alt={character.name} className= "object-cover w-full h-full" />
+
+            </div>
             <p className="text-center mt-2">{character.name}</p>
           </div>
         ))}
       </div>
 
       {selectedCharacter && (
-        <Modal show={modalIsOpen} onClose={closeModal}>
-          <Modal.Header>{selectedCharacter.name}</Modal.Header>
-          <Modal.Body>
+        <Modal show={modalIsOpen} onClose={closeModal} className=''>
+          <Modal.Header className='bg-slate-500'>{selectedCharacter.name}</Modal.Header>
+          <Modal.Body className='bg-slate-500'>
             
-            <div className="flex gap-8 items-center">
+            <div className="flex gap-8 items-center bg-slate-800 rounded-xl">
              
               <div>
               {selectedCharacter.image && (
@@ -74,7 +77,7 @@ const Home: React.FC = () => {
               
             </div>
           </Modal.Body>
-          <Modal.Footer>
+          <Modal.Footer  className='bg-slate-500'>
             <button onClick={closeModal} className="btn btn-primary">Close</button>
           </Modal.Footer>
         </Modal>
