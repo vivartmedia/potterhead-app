@@ -1,34 +1,10 @@
 // src/services/potterheadService.ts
 import axios from 'axios';
+import { Character } from '../../Interfaces/Interfaces';
 
 const API_URL = 'https://potterhead-api.vercel.app/api/characters';
 
-export interface Character {
-  id: string;
-  name: string;
-  alternate_names: string[];
-  species: string;
-  gender: string;
-  house: string;
-  dateOfBirth: string;
-  yearOfBirth: number;
-  wizard: boolean;
-  ancestry: string;
-  eyeColour: string;
-  hairColour: string;
-  wand: {
-    wood: string;
-    core: string;
-    length: number;
-  };
-  patronus: string;
-  hogwartsStudent: boolean;
-  hogwartsStaff: boolean;
-  actor: string;
-  alternate_actors: string[];
-  alive: boolean;
-  image: string;
-}
+
 
 export const getCharacters = async (): Promise<Character[]> => {
   try {
