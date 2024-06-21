@@ -1,12 +1,9 @@
-// src/app/page.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { getCharacters, Character } from '../services/potterheadService';
-import styles from '../styles/Home.module.css'; // Correct path
-
-Modal.setAppElement('#__next'); // Ensure modal accessibility
+import styles from '../styles/Home.module.css';
 
 const Home: React.FC = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -16,6 +13,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     const fetchCharacters = async () => {
       const data = await getCharacters();
+      console.log('Fetched characters:', data); // Log fetched data
       setCharacters(data);
     };
     fetchCharacters();
